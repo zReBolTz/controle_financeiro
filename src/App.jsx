@@ -3,8 +3,29 @@ import "./App.css";
 import Card from "./components/Card";
 import InputMoney from "./components/inputMoney";
 import Finances from "./components/finances";
+import { useState } from "react";
+import { v4 } from "uuid";
 
 function App() {
+  const [finances, setFinances] = useState([]);
+
+  function onAddFinances(description, value, earningsOrExpenses) {
+    const newFinances = {
+      id: v4(),
+      description: description,
+      value: value,
+      earningsOrExpenses: earningsOrExpenses,
+    };
+    setFinances([...finances, newFinances]);
+  }
+
+  function onDeleteFinance(financeId) {
+    const newFinance = finances.filter((item) => {
+      return financeId != item.id;
+    });
+    setFinances(newFinance);
+  }
+
   return (
     <div className="w-screen h-screen">
       <div className="w-full h-[200px] bg-emerald-500 flex justify-center -mb-9 ">
@@ -20,9 +41,9 @@ function App() {
             <Card type="Total" icon={<Wallet />} />
           </div>
           <br></br>
-          <InputMoney />
+          <InputMoney onAddFinances={onAddFinances} />
           <br></br>
-          <Finances />
+          <Finances finances={finances} onDeleteFinance={onDeleteFinance} />
         </div>
       </div>
     </div>
