@@ -6,7 +6,7 @@ import Finances from "./components/finances";
 
 function App() {
   return (
-    <div>
+    <div className="w-screen h-screen">
       <div className="w-full h-[200px] bg-emerald-500 flex justify-center -mb-9 ">
         <h1 className="text-white font-extrabold font-mono py-14 text-3xl ">
           Controle Financeiro
