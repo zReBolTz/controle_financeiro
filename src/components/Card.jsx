@@ -1,7 +1,15 @@
+import { TrendingUp } from "lucide-react";
+
 const Card = (props) => {
   return (
-    <div className="w-96 h-72 bg-green-500">
-      <span>Entradas</span>
+    <div className="w-full h-40 bg-white flex flex-col rounded-md ">
+      <div className="flex justify-between m-7 mx-10">
+        <span className="text-2xl">{props.type}</span>
+        <span className={props.color}>{props.icon}</span>
+      </div>
+      <div className="flex justify-center">
+        <span className="text-3xl font-semibold">R$ 2000</span>
+      </div>
     </div>
   );
 };
