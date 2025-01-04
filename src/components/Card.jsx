@@ -1,5 +1,3 @@
-import { TrendingUp } from "lucide-react";
-
 const Card = (props) => {
   return (
     <div className="w-full h-40 bg-white flex flex-col rounded-md ">
@@ -8,7 +6,7 @@ const Card = (props) => {
         <span className={props.color}>{props.icon}</span>
       </div>
       <div className="flex justify-center">
-        <span className="text-3xl font-semibold">R$ 2000</span>
+        <span className="text-3xl font-semibold">R$ {props.amount}</span>
       </div>
     </div>
   );
