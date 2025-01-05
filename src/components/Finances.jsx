@@ -1,4 +1,4 @@
-import { Trash2Icon } from "lucide-react";
+import { CircleArrowDown, CircleArrowUp, Trash2Icon } from "lucide-react";
 
 const Finances = (props) => {
   return (
@@ -16,7 +16,20 @@ const Finances = (props) => {
             <span className="w-[500px]">{item.description}</span>
             <span className="w-[400px]">{item.value}</span>
             <div className="w-[200px] flex justify-between">
-              <span>{item.earningsOrExpenses}</span>
+              <span
+                className={`${
+                  item.earningsOrExpenses === "earnings" && "text-green-600"
+                } || ${
+                  item.earningsOrExpenses === "expenses" && "text-red-600"
+                } `}
+              >
+                {(item.earningsOrExpenses === "earnings" && (
+                  <CircleArrowUp />
+                )) ||
+                  (item.earningsOrExpenses === "expenses" && (
+                    <CircleArrowDown />
+                  ))}
+              </span>
               <button
                 className="mr-8 w-8 text-white bg-emerald-500 rounded-md flex justify-center items-center"
                 onClick={() => props.onDeleteFinance(item.id)}
